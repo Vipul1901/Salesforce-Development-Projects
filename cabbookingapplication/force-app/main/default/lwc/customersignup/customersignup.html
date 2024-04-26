@@ -1,0 +1,41 @@
+<template>
+    <lightning-card title="Premium Cab Services">
+        <div class="slds-p-around_medium">
+            <p class="slds-align_absolute-center">
+                <strong>Sign up to book a cab</strong></p>
+            <br>
+            <div class="slds-grid slds-grid_align-center">
+                <lightning-button label="Sign Up" 
+                variant="brand" class="slds-m-right_small" 
+                onclick={handleSignUp}></lightning-button>
+                <lightning-button label="Sign In" variant="brand"
+                onclick={handleSignIn}></lightning-button>
+            </div>
+            <template if:true={showform}>
+                <lightning-record-edit-form object-api-name="Cab_Customer__c"
+                onsuccess={handleSuccess}>
+                <lightning-messages></lightning-messages>
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col">
+                            <lightning-input-field field-name="Name" required>
+                                </lightning-input-field>
+                            <lightning-input-field field-name="Customer_Email__c" required>
+                                </lightning-input-field>
+                            <lightning-input-field field-name="Username__c" required>
+                                </lightning-input-field>
+                            <lightning-input-field field-name="Password__c" 
+                            type="password" label="Enter your password" name="input1"
+                            required>
+                                </lightning-input-field>
+                        </div>
+                    </div>
+                    <div class="slds-m-top_medium slds-m-bottom_large">
+                        <lightning-button label="Submit" type="submit" variant="brand"
+                        class="slds-align_absolute-center">
+                        </lightning-button>
+                    </div>
+                </lightning-record-edit-form>
+            </template>
+        </div>
+    </lightning-card>
+</template>

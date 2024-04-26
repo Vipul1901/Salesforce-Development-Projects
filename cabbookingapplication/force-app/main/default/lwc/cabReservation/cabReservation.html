@@ -1,0 +1,75 @@
+<template>
+    <lightning-card title="Cab Booking" icon-name="utility:car">
+        <div class="slds-p-around_medium">
+            <p class="slds-align_absolute-center"><b>Reserve a Cab</b></p>
+            <br/>
+            <lightning-record-form object-api-name="Cab_Reservation__c"
+            fields={fields}
+            onsubmit={handleSubmit}
+            onsuccess={handleSuccess}>
+            </lightning-record-form>
+            <template if:true={showModal}>
+                <div role="dialog" tabindex="-1"
+                class="slds-modal slds-fade-in-open 
+                slds-modal_large">
+                <div class="slds-modal_container">
+                    <div class="slds-modal__header">
+                        <h2 class="slds-text-heading_medium">Booking Details</h2>
+                    </div>
+                    <button class="slds-button slds-button_icon slds-modal__close
+                        slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close" size="small"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                </div>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <lightning-record-view-form record-id={recordId}
+                    object-api-name="Cab_Reservation__c">
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_6-of-12">
+                                <lightning-output-field field-name="Name"></lightning-output-field>
+                            </div>
+                            <div class="slds-col slds-size_6-of-12">
+                                <lightning-output-field field-name="Customer_Name__c"></lightning-output-field>
+                            </div>
+                            <div class="slds-col slds-size_6-of-12">
+                                <lightning-output-field field-name="Aadhar_Number__c"></lightning-output-field>
+                            </div>
+                            <div class="slds-col slds-size_6-of-12">
+                                <lightning-output-field field-name="Travel_Date_Time__c"></lightning-output-field>
+                            </div>
+                            <div class="slds-col slds-size_6-of-12">
+                                <lightning-output-field field-name="Number_of_Travellers__c"></lightning-output-field>
+                            </div>
+                            <div class="slds-col slds-size_6-of-12">
+                                <lightning-output-field field-name="Travel_from__c"></lightning-output-field>
+                            </div>
+                            <div class="slds-col slds-size_6-of-12">
+                                <lightning-output-field field-name="Travel_to__c"></lightning-output-field>
+                            </div>
+                            <div class="slds-col slds-size_6-of-12">
+                                <lightning-output-field field-name="Vehicle__c"></lightning-output-field>
+                            </div>
+                            <div class="slds-col slds-size_6-of-12">
+                                <lightning-output-field field-name="Customer_Email__c"></lightning-output-field>
+                            </div>
+                            <div class="slds-col slds-size_6-of-12">
+                                <lightning-output-field field-name="Driver__c"></lightning-output-field>
+                            </div>
+                            <div class="slds-col slds-size_6-of-12">
+                                <lightning-output-field field-name="Driver_Email__c"></lightning-output-field>
+                            </div>
+                            <div class="slds-col slds-size_6-of-12">
+                                <lightning-output-field field-name="Price_per_Km__c"></lightning-output-field>
+                            </div>
+                        </div>
+                    </lightning-record-view-form>
+                    <br><br>
+                </div>
+                </div>
+                </div>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,38 @@
+<template>
+    <lightning-card>
+        <lightning-progress-indicator current-step={currentStep}
+         type="base" variant="base">
+         <lightning-progress-step label="Step1" value="1"
+         onclick={handleOnStepClick}></lightning-progress-step>
+         <lightning-progress-step label="Step2" value="2"
+         onclick={handleOnStepClick}></lightning-progress-step>
+         <lightning-progress-step label="Step3" value="3"
+         onclick={handleOnStepClick}></lightning-progress-step>
+        </lightning-progress-indicator>
+        <template if:true={isStepOne}>
+            <div>
+                <h1><b>WELCOME TO PREMIUM CABS! WE CURRENTLY SERVE IN FOLLOWING LOCATIONS
+                </b></h1>
+                <c-cab-map></c-cab-map>
+            </div>
+        </template>
+        <template if:true={isStepTwo}>
+            <div>
+                <c-cab-reservation></c-cab-reservation>
+            </div>
+        </template>
+        <template if:true={isStepThree}>
+            <div>
+                THANK YOU...HOPE YOU HAVE A WONDERFUL RIDE!!!
+            </div>
+        </template>
+        <template if:true={isEnableNext}>
+            <lightning-button label="Next" variant="brand" onclick={handleNext}>
+            </lightning-button>
+        </template>
+        <template if:true={isEnbaledFinish}>
+            <lightning-button label="Finish" variant="brand" onclick={handleFinish}>
+            </lightning-button>
+        </template>
+    </lightning-card>
+</template>
